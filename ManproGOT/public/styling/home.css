@@ -44,13 +44,9 @@
     src: url('../fonts/Avenue/MADEAvenuePERSONALUSE-Regular.otf');
 }
 
-#title{
-    font-family: 'game-of-thrones';
-}
-
-#desc{
-    font-family: 'avenue';
-    font-weight: lighter;
+@font-face{
+    font-family: 'barkentina';
+    src: url('../fonts/Barkentina1/Barkentina 1.otf');
 }
 
 #content-wrapper{
@@ -60,10 +56,25 @@
     column-gap: 5%;
 }
 
+#title{
+    font-family: 'game-of-thrones';
+}
+
+#desc-website{
+    margin-left: 4%;
+}
+
+#desc{
+    font-family: 'barkentina';
+    font-weight: lighter;
+}
+
 #desc-fitur{
     display: grid;
     grid-template-rows: auto auto auto;
     row-gap: 2%;
+    font-family: 'barkentina';
+    font-size: 90%;
 }
 
 #fitur-grafikbar{

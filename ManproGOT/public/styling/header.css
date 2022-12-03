@@ -44,6 +44,11 @@
     src: url('../fonts/Avenue/MADEAvenuePERSONALUSE-Regular.otf');
 }
 
+@font-face{
+    font-family: 'barkentina';
+    src: url('../fonts/Barkentina1/Barkentina 1.otf');
+}
+
 header{
     /* font-family: 'helvetica-black'; */
     display: inline-flex;

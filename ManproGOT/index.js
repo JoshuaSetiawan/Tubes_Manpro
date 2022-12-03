@@ -22,16 +22,16 @@ app.get('/', (req,res) => {
     res.render('home.ejs');
 });
 
-app.get('/grafbar', (req,res) => {
-    res.render('grafbar.ejs');
+app.get('/grafikbar', (req,res) => {
+    res.render('grafikbar.ejs');
 });
 
 app.get('/cari', (req,res) => {
     res.render('cari.ejs');
 });
 
-app.get('/grafik', (req,res) => {
-    res.render('grafik.ejs');
+app.get('/graf', (req,res) => {
+    res.render('graf.ejs');
 });
 
 app.use('/', (req,res) => {
