@@ -10,12 +10,48 @@
                 <%- include('partial/header.ejs'); -%> 
             </div>
 
-            <div id="descWebsite">
-                <div>
-                    <h1>HOME</h1>
+            <div id="content-wrapper">
+                <div id="desc-website" class="grid-content">
+                    <div id="title">
+                        <h1>
+                            Selamat Datang
+                        </h1>
+                    </div>
+                    <div id="desc">
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <h3>DESC</h3>
+
+                <div id="desc-fitur" class="grid-content">
+                    <div class="fitur" id="fitur-grafbar">
+                        <img src="images/noun-house-frey-2548454.png">
+                        <p>
+                            Menampilkan grafik yang berisi 10 karakter yang paling banyak berinteraksi dengan karakter lain dalam buku tertentu.
+                        </p>
+                        <a href="/grafbar">
+                            <input type="button" class="buttonHome" name="grafbar" value="Grafbar">
+                        </a>
+                    </div>
+                    <div class="fitur" id="fitur-cari">
+                        <img src="images/noun-game-of-thrones-3118594.png">
+                        <p>
+                            Menampilkan karakter yang dihubungi oleh karakter lain setelah pemilihan buku dan karakter.
+                        </p>
+                        <a href="/cari">
+                            <input type="button" class="buttonHome" name="cari" value="Cari">
+                        </a>
+                    </div>
+                    <div class="fitur" id="fitur-grafik">
+                        <img src="images/noun-jagged-crown-2312654.png">
+                        <p>
+                            Menampilkan graf tidak berarah dengan simpul berisi nama karaker dan sisi berisi jumlah dari interaksi (dengan nilai max 10).
+                        </p>
+                        <a href="/grafik">
+                            <input type="button" class="buttonHome" name="grafik" value="Grafik">
+                        </a>
+                    </div>
                 </div>
             </div>
         </body>
