@@ -1,0 +1,8 @@
+*Bisi pada lupa
+
+==Untuk jalanin website==
+
+1. Buka folder project
+2. Right click dimanapun, pilih git bash here
+3. ketik "npm run start" atau "npm run q"
+4. Buka browser, ketik 'localhost:8080'
