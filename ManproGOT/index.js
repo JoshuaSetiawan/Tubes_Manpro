@@ -1,8 +1,40 @@
 import express from 'express';
 import path from 'path';
+import mysql from 'mysql';
 
 const port = 8080;
 const app = express();
+
+// NOTE: password harus sesuai dengan password mysql
+
+const pool = mysql.createPool({
+    user: 'root',
+    password: 'erwin08',
+    database: 'gotbook',
+    host: 'localhost',
+    connectionLimit:10
+});
+
+const dbConnect = () => {
+    return new Promise((resolve, reject) => {
+        pool.getConnection((err, conn) => {
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve(conn);
+            }
+        })
+    })
+};
+
+// Query
+pool.query(`SELECT * FROM book1`, (err, result,fields) => {
+    if(err){
+        return console.log(err);
+    }
+    return console.log(result);
+});
 
 app.use(express.json());
 app.set('view engine','ejs');
