@@ -69,6 +69,11 @@
     font-weight: lighter;
 }
 
+#image1_home{
+    width: 90%;
+    height: 60%;
+}
+
 #desc-fitur{
     display: grid;
     grid-template-rows: auto auto auto;
