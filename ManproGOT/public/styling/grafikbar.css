@@ -1,0 +1,55 @@
+/* Inisialisasi font sebelum penggunaan */
+@font-face {
+    font-family: 'helvetica-bold';
+    src: url('../fonts/Helvetica Neue/Helvetica Neu Bold.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-black';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue BlackCond.ttf');
+}
+
+@font-face{
+    font-family: 'helvetica-light';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Light.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-medium';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Medium.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-thin';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Thin.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-standard';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue.ttf');
+}
+
+@font-face {
+    font-family: 'buttershine';
+    src: url('../fonts/Buttershine/BUTTERSHINE SERIF.otf');
+}
+
+@font-face{
+    font-family: 'game-of-thrones';
+    src: url('../fonts/Buttershine/Game of Thrones.ttf');
+}
+
+@font-face{
+    font-family: 'avenue';
+    src: url('../fonts/Avenue/MADEAvenuePERSONALUSE-Regular.otf');
+}
+
+@font-face{
+    font-family: 'barkentina';
+    src: url('../fonts/Barkentina1/Barkentina 1.otf');
+}
+.content_grid{
+    width: 90%;
+    height: 25vw;
+    border: 1px solid black;
+}

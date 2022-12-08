@@ -1,0 +1,156 @@
+/* Inisialisasi font sebelum penggunaan */
+@font-face {
+    font-family: 'helvetica-bold';
+    src: url('../fonts/Helvetica Neue/Helvetica Neu Bold.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-black';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue BlackCond.ttf');
+}
+
+@font-face{
+    font-family: 'helvetica-light';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Light.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-medium';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Medium.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-thin';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Thin.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-standard';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue.ttf');
+}
+
+@font-face {
+    font-family: 'buttershine';
+    src: url('../fonts/Buttershine/BUTTERSHINE SERIF.otf');
+}
+
+@font-face{
+    font-family: 'game-of-thrones';
+    src: url('../fonts/Game of Thrones/Game of Thrones.ttf');
+}
+
+@font-face{
+    font-family: 'avenue';
+    src: url('../fonts/Avenue/MADEAvenuePERSONALUSE-Regular.otf');
+}
+
+@font-face{
+    font-family: 'barkentina';
+    src: url('../fonts/Barkentina1/Barkentina 1.otf');
+}
+
+#content-wrapper{
+    margin-top: 1%;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 5%;
+}
+
+#title{
+    font-family: 'game-of-thrones';
+}
+
+#desc-website{
+    margin-left: 4%;
+}
+
+#desc{
+    font-family: 'barkentina';
+    font-weight: lighter;
+}
+
+#image1_home{
+    width: 90%;
+    height: 60%;
+}
+
+#desc-fitur{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    row-gap: 2%;
+    font-family: 'barkentina';
+    font-size: 90%;
+}
+
+#fitur-grafikbar{
+    justify-self: center;
+    width: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 25px;
+    align-items: center;
+    text-align: center;
+}
+
+#fitur-grafikbar > img{
+    margin-top: 2%;
+    width: 30%;
+    height: 30%;
+}
+
+#fitur-cari{
+    justify-self: center;
+    width: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 25px;
+    align-items: center;
+    text-align: center;
+}
+
+#fitur-cari > p{
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#fitur-cari > img{
+    margin-top: 3%;
+    width: 20%;
+    height: 35%;
+}
+
+#fitur-graf{
+    justify-self: center;
+    width: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 25px;
+    align-items: center;
+    text-align: center;
+}
+
+#fitur-graf > img{
+    margin-top: 2%;
+    width: 25%;
+    height: 25%;
+}
+
+.buttonHome{
+    display: inline;
+    font-size: 120%;
+    border: none;
+    font-family: 'avenue';
+    /* background color harus pasang value inherit, sesuai warna backgroundnya */
+    background-color: white;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.buttonHome:hover{
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+}
