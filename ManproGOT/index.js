@@ -62,6 +62,16 @@ app.get('/cari', (req,res) => {
     res.render('cari.ejs');
 });
 
+// app.post('/filterNama', multerParser.none(), (req,res) => {
+//     let nama = req.body.FilterBP;
+//     pool.query(`select * where Source = ?`, [nama],(err, result, fields)=>{
+//         if(err){
+//             return console.log(err);
+//         }
+//         nama = result[0].nama;
+//     });  
+// })
+
 app.get('/graf', (req,res) => {
     res.render('graf.ejs');
 });
