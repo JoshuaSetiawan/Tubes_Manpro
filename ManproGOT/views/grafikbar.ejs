@@ -3,7 +3,11 @@
         <head>
             <title>Title of the document</title>
             <link rel="stylesheet" href="styling/grafikbar.css">
+            <script src = 'script/script.js' defer></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         </head>
+
+
 
         <body>
             <div id="navBar">
@@ -18,21 +22,27 @@
                 <div>
                     <h3>DESC</h3>
                 </div>
+
+                <form action="/proses-grafik-bar" method="post" id="form">
+
                 <form action="/filterBukuGrafik" method="post" enctype="multipart/form-data">
+                
                     <label for="input_buku">Input Buku:</label>
                     <select name="dropdown_buku" id="dropdown_buku">
-                      <option value="buku1">Buku 1</option>
-                      <option value="buku2">Buku 2</option>
-                      <option value="buku3">Buku 3</option>
-                      <option value="buku4">Buku 4</option>
-                      <option value="buku5">Buku 5</option>
+                        <option value="book1">Buku 1</option>
+                        <option value="book2">Buku 2</option>
+                        <option value="book3">Buku 3</option>
+                        <option value="book4">Buku 4</option>
+                        <option value="book5">Buku 5</option>
                     </select>
-                    <br><br>
-                    <!-- <input type="submit" value="Submit"> -->
+                    <input type="submit" value="Submit">
                 </form>
 
-                <div class="content_grid">
-                    
+                
+                <div id="flex-wrapper">
+                    <div id="canvas">
+                        <canvas id="myChart"></canvas>
+                    </div>
                 </div>
             </div>
         </body>
