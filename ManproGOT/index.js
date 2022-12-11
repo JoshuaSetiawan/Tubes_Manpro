@@ -85,15 +85,21 @@ app.get('/graf', (req,res) => {
 });
 
 app.post('/proses-grafik-bar', (req,res) => {
-    const nomor = req.body.dropdown_buku;
-    console.log(nomor);
+    //parameter ambil dari init
+    const nomor = req.body.book;
     switch(nomor){
         case 'book1':
             pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book1 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
                 if(err){
                     return console.log(err);
                 }
-                console.log(result);
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
             });
             break;
         case 'book2':
@@ -101,7 +107,13 @@ app.post('/proses-grafik-bar', (req,res) => {
                 if(err){
                     return console.log(err);
                 }
-                console.log(result);
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
             });
             break;
         case 'book3':
@@ -109,7 +121,13 @@ app.post('/proses-grafik-bar', (req,res) => {
                 if(err){
                     return console.log(err);
                 }
-                console.log(result);
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
             });
             break;
         case 'book4':
@@ -117,7 +135,13 @@ app.post('/proses-grafik-bar', (req,res) => {
                 if(err){
                     return console.log(err);
                 }
-                console.log(result);
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
             });
             break;
         case 'book5':
@@ -125,7 +149,13 @@ app.post('/proses-grafik-bar', (req,res) => {
                 if(err){
                     return console.log(err);
                 }
-                console.log(result);
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
             });
             break;
     }

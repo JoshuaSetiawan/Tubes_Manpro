@@ -49,12 +49,12 @@
     src: url('../fonts/Barkentina1/Barkentina 1.otf');
 }
 
-#canvas{
-    border: 1px solid black;
-    height: inherit;
+#flex-wrapper{
+    display: flex;
+    justify-content: center;
 }
 
-#myChart{
-    width: fit-content;
-    height: fit-content;
+#canvas{
+    width:60%;
+    height:60%;
 }
