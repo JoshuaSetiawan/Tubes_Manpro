@@ -29,12 +29,30 @@ const dbConnect = () => {
 };
 
 // Query
-pool.query(`SELECT * FROM book1`, (err, result,fields) => {
-    if(err){
-        return console.log(err);
-    }
-    return console.log(result);
-});
+// pool.query(`SELECT * FROM book1`, (err, result,fields) => {
+//     if(err){
+//         return console.log(err);
+//     }
+//     return console.log(result);
+// });
+
+// pool.query(`SELECT `)
+
+
+// pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book1 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+//     if(err){
+//         return console.log(err);
+//     }
+//     return console.log(result);
+// });
+
+    // pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book1 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+    //     if(err){
+    //         return console.log(err);
+    //     }
+    //     console.log(typeof(result));
+    //     return result;
+    // });
 
 app.use(express.json());
 app.set('view engine','ejs');
@@ -64,6 +82,53 @@ app.get('/cari', (req,res) => {
 
 app.get('/graf', (req,res) => {
     res.render('graf.ejs');
+});
+
+app.post('/proses-grafik-bar', (req,res) => {
+    const nomor = req.body.dropdown_buku;
+    console.log(nomor);
+    switch(nomor){
+        case 'book1':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book1 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                console.log(result);
+            });
+            break;
+        case 'book2':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book2 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                console.log(result);
+            });
+            break;
+        case 'book3':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book3 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                console.log(result);
+            });
+            break;
+        case 'book4':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book4 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                console.log(result);
+            });
+            break;
+        case 'book5':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book5 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                console.log(result);
+            });
+            break;
+    }
 });
 
 app.use('/', (req,res) => {

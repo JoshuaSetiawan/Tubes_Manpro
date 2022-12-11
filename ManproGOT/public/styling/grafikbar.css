@@ -48,8 +48,13 @@
     font-family: 'barkentina';
     src: url('../fonts/Barkentina1/Barkentina 1.otf');
 }
-.content_grid{
-    width: 90%;
-    height: 25vw;
+
+#canvas{
     border: 1px solid black;
+    height: inherit;
+}
+
+#myChart{
+    width: fit-content;
+    height: fit-content;
 }

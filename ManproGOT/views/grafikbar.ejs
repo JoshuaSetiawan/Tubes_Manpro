@@ -3,6 +3,7 @@
         <head>
             <title>Title of the document</title>
             <link rel="stylesheet" href="styling/grafikbar.css">
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         </head>
 
         <body>
@@ -18,21 +19,43 @@
                 <div>
                     <h3>DESC</h3>
                 </div>
-                <form action="/action_page.php">
+                <form action="/proses-grafik-bar" method="post">
                     <label for="input_buku">Input Buku:</label>
                     <select name="dropdown_buku" id="dropdown_buku">
-                      <option value="buku1">Buku 1</option>
-                      <option value="buku2">Buku 2</option>
-                      <option value="buku3">Buku 3</option>
-                      <option value="buku4">Buku 4</option>
-                      <option value="buku5">Buku 5</option>
+                        <option value="book1">Buku 1</option>
+                        <option value="book2">Buku 2</option>
+                        <option value="book3">Buku 3</option>
+                        <option value="book4">Buku 4</option>
+                        <option value="book5">Buku 5</option>
                     </select>
-                    <br><br>
-                    <!-- <input type="submit" value="Submit"> -->
+                    <input type="submit" value="Submit">
                 </form>
 
-                <div class="content_grid">
-                    
+                <div id="canvas">
+                    <!-- <div>
+                        <canvas id="myChart"></canvas>
+                    </div> -->
+                    <script>
+                        const ctx = document.getElementById('myChart');
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                datasets: [{
+                                    label: '# of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                    beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    </script>
                 </div>
             </div>
         </body>
