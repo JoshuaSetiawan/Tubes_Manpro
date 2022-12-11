@@ -1,0 +1,115 @@
+/* Inisialisasi font sebelum penggunaan */
+@font-face {
+    font-family: 'helvetica-bold';
+    src: url('../fonts/Helvetica Neue/Helvetica Neu Bold.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-black';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue BlackCond.ttf');
+}
+
+@font-face{
+    font-family: 'helvetica-light';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Light.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-medium';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Medium.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-thin';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue Thin.ttf');
+}
+
+@font-face {
+    font-family: 'helvetica-standard';
+    src: url('../fonts/Helvetica Neue/HelveticaNeue.ttf');
+}
+
+@font-face {
+    font-family: 'buttershine';
+    src: url('../fonts/Buttershine/BUTTERSHINE SERIF.otf');
+}
+
+@font-face{
+    font-family: 'game-of-thrones';
+    src: url('../fonts/Buttershine/Game of Thrones.ttf');
+}
+
+@font-face{
+    font-family: 'avenue';
+    src: url('../fonts/Avenue/MADEAvenuePERSONALUSE-Regular.otf');
+}
+
+@font-face{
+    font-family: 'barkentina';
+    src: url('../fonts/Barkentina1/Barkentina 1.otf');
+}
+
+*{
+    box-sizing: border-box;
+}
+
+/* body{    
+    background-image: url('../images/wallpaperGOT.jpg');
+    background-size: 100%;
+} */
+  
+#myInput {
+    background-image: url('../images/searchIcon.png');
+    background-size: 1.5%;
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+  
+#myUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+  
+#myUL li a {
+    border: 1px solid #ddd;
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+}
+  
+#myUL li a:hover:not(.header) {
+    background-color: #eee;
+}
+
+#pageNavPosition{
+    margin-top: -7vh;
+}
+.pager-nav {
+    margin: 16px 0;
+}
+.pager-nav span {
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 1px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+.pager-nav span:hover,
+.pager-nav .pg-selected {
+    background-color: #f9f9f9;
+    border: 1px solid #CCCCCC;
+}
