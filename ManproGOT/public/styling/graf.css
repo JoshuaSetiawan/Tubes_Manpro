@@ -12,18 +12,24 @@ body{
 	line-height: 1.4;
 	color: #fff;
 	overflow-x: hidden;
-    background-color: #2350e2d8;
+    /* background-color: #2350e2d8; */
+    background-image: url(../images/graf.png);
     background-position: center;
-    background-repeat: repeat;
-    background-size: 4%;
+    background-repeat: no-repeat;
+    background-size: auto;
     width: 100%;
-    display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -ms-flex-pack: center;
     justify-content: center;
     padding-bottom: 300px;
+}
+p{
+    color:#faf9f7 ;
+}
+h1{
+    color:#faf9f7 ;
 }
 .sec-center {
   position: relative;
