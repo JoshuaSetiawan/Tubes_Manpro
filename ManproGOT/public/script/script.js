@@ -37,6 +37,7 @@ function myFunction() {
           li[i].style.display = "none";
       }
   }
+}
 
 class Graph {
   constructor(noOfVertices) {
