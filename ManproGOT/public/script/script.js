@@ -1,23 +1,42 @@
+// import { format } from "mysql";
+
 const searching = this.document.getElementById('body')
+
+
+// function myFunction() {
+//     var input, filter, ul, li, a, i, txtValue;
+//     input = document.getElementById('');
+//     filter = input.value.toUpperCase();
+//     ul = document.getElementById("");
+//     li = ul.getElementsByTagName('');
+  
+//     // Loop through all list items, and hide those who don't match the search query
+//     for (i = 0; i < li.length; i++) {
+//       a = li[i].getElementsByTagName("a")[0];
+//       txtValue = a.textContent || a.innerText;
+//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//         li[i].style.display = "";
+//       } else {
+//         li[i].style.display = "none";
+//       }
+//     }
+//   }
 
 function myFunction() {
   var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('');
+  input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
-  ul = document.getElementById("");
-  li = ul.getElementsByTagName('');
-
-  // Loop through all list items, and hide those who don't match the search query
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName("li");
   for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+      } else {
+          li[i].style.display = "none";
+      }
   }
-}
 
 class Graph {
   constructor(noOfVertices) {
@@ -94,5 +113,72 @@ class Graph {
         this.DFSUtil(get_elem, visited);
     }
   }
+
+
+}
+
+
+
+
+//Erwin
+const form = document.getElementById("form");
+form.addEventListener("submit", onSubmit);
+
+function onSubmit(event){
+  event.preventDefault();
+  let formElements = event.currentTarget.elements;
+  // console.log(formElements[0].value);
+  const obj = {book: formElements[0].value};
+  let str = encodeURL(obj);
+  console.log(str);
+
+  const init = {
+    method: 'post',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: str
+  };
+
+  fetch('proses-grafik-bar',init)
+  .then(res => {
+    console.log(res.status);
+    return res.text();
+  })
+  .then(result => {
+    let resultJSON = JSON.parse(result);
+    if(resultJSON.status == 'success'){
+      console.log('sukses');
+      console.log(resultJSON);
+      const ctx = document.getElementById('myChart');
+      new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: resultJSON.arrSource,
+              datasets: [{
+                  label: 'Jumlah interaksi dengan karakter lain',
+                  data: resultJSON.arrCount,
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                  beginAtZero: true
+                  }
+              }
+          }
+      });
+    }
+    // console.log(result);
+  })
+}
+
+function encodeURL(data){
+  const ret = [];
+  for (let d in data){
+      ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+  }
+  return ret.join('&');
 
 }

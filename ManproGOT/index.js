@@ -29,12 +29,30 @@ const dbConnect = () => {
 };
 
 // Query
-pool.query(`SELECT * FROM book1`, (err, result,fields) => {
-    if(err){
-        return console.log(err);
-    }
-    return console.log(result);
-});
+// pool.query(`SELECT * FROM book1`, (err, result,fields) => {
+//     if(err){
+//         return console.log(err);
+//     }
+//     return console.log(result);
+// });
+
+// pool.query(`SELECT `)
+
+
+// pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book1 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+//     if(err){
+//         return console.log(err);
+//     }
+//     return console.log(result);
+// });
+
+    // pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book1 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+    //     if(err){
+    //         return console.log(err);
+    //     }
+    //     console.log(typeof(result));
+    //     return result;
+    // });
 
 app.use(express.json());
 app.set('view engine','ejs');
@@ -62,8 +80,95 @@ app.get('/cari', (req,res) => {
     res.render('cari.ejs');
 });
 
+// app.post('/filterNama', multerParser.none(), (req,res) => {
+//     let nama = req.body.FilterBP;
+//     pool.query(`select * where Source = ?`, [nama],(err, result, fields)=>{
+//         if(err){
+//             return console.log(err);
+//         }
+//         nama = result[0].nama;
+//     });  
+// })
+
 app.get('/graf', (req,res) => {
     res.render('graf.ejs');
+});
+
+app.post('/proses-grafik-bar', (req,res) => {
+    //parameter ambil dari init
+    const nomor = req.body.book;
+    switch(nomor){
+        case 'book1':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book1 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
+            });
+            break;
+        case 'book2':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book2 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
+            });
+            break;
+        case 'book3':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book3 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
+            });
+            break;
+        case 'book4':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book4 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
+            });
+            break;
+        case 'book5':
+            pool.query(`SELECT source,COUNT(source) as 'banyak' FROM book5 GROUP BY source ORDER BY banyak DESC LIMIT 10`, (err, result,fields) => {
+                if(err){
+                    return console.log(err);
+                }
+                let arrSumber = [];
+                let arrBanyak = [];
+                for (let i = 0; i < result.length; i++) {
+                    arrSumber[i] = result[i].source;
+                    arrBanyak[i] = result[i].banyak;
+                }
+                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
+            });
+            break;
+    }
 });
 
 app.use('/', (req,res) => {
