@@ -93,13 +93,7 @@ app.post('/proses-grafik-bar', (req,res) => {
                 if(err){
                     return console.log(err);
                 }
-                let arrSumber = [];
-                let arrBanyak = [];
-                for (let i = 0; i < result.length; i++) {
-                    arrSumber[i] = result[i].source;
-                    arrBanyak[i] = result[i].banyak;
-                }
-                res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrCount: arrBanyak});
+                res.send({status: 'success', url:'/grafikbar', arrSource: result.source, arrCount: result.banyak});
             });
             break;
         case 'book2':
