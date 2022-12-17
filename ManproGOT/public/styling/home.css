@@ -49,6 +49,22 @@
     src: url('../fonts/Barkentina1/Barkentina 1.otf');
 }
 
+body{    
+    background-image: url('../images/GOT.jpg');
+    background-size: 100%;
+}
+
+.fitur{
+    background-color: #c7c2c2;
+    opacity: 80%;
+}
+
+#titleDesc{
+    /* color:rgb(193, 191, 191); */
+    color: rgb(255, 255, 255);
+    opacity: 80%;
+}
+
 body{
     background-image: url(../images/game-of-thrones-a-telltale-games-series-hd-wallpapers-33155-7193722.jpg);
     background-repeat: no-repeat;
@@ -76,6 +92,8 @@ body{
 #desc{
     font-family: 'barkentina';
     font-weight: lighter;
+    background-color: black;
+    opacity: 60%;
 }
 
 #image1_home{
@@ -89,9 +107,10 @@ body{
 
     display: grid;
     grid-template-rows: auto auto auto;
-    row-gap: 2%;
+    row-gap: 3%;
     font-family: 'barkentina';
     font-size: 90%;
+    margin-left: 15%;
 }
 
 #fitur-grafikbar{
