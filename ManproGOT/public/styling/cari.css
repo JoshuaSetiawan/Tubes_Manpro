@@ -57,36 +57,24 @@
     background-image: url('../images/wallpaperGOT.jpg');
     background-size: 100%;
 } */
-  
-#myInput {
-    background-image: url('../images/searchIcon.png');
-    background-size: 1.5%;
-    background-position: 10px 12px;
-    background-repeat: no-repeat;
-    width: 100%;
-    font-size: 16px;
-    padding: 12px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
-}
-  
-#myUL {
+
+/* #myUL {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-  
+
 #myUL li a {
-    border: 1px solid #ddd;
-    margin-top: -1px; /* Prevent double borders */
-    background-color: #f6f6f6;
+    border: 1px solid #ddd; 
+    margin-top: -1px;
+    background-color: #f6f6f6; 
     padding: 12px;
     text-decoration: none;
     font-size: 18px;
     color: black;
     display: block
-}
-  
+} 
+
 #myUL li a:hover:not(.header) {
     background-color: #eee;
 }
@@ -112,4 +100,27 @@
 .pager-nav .pg-selected {
     background-color: #f9f9f9;
     border: 1px solid #CCCCCC;
+} */
+
+#containerbuku{
+    display: flex;
+}
+
+#search-image{
+    width: 1.5%;
+    height: 1.5%;
+}
+
+#container-nama{
+    display: flex;
+    text-align: center;
+    column-gap: 2%;
+}
+
+#inputNama{
+    width: 30%;
+}
+
+#submitCari{
+    align-self: flex-end;
 }

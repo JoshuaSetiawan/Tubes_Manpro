@@ -1,0 +1,9 @@
+#flex-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#canvasGraph{
+    width:60%;
+    height:60%;
+}
