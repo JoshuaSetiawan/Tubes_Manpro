@@ -9,14 +9,14 @@ body{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	font-size: 15px;
-	line-height: 1.4;
+	/* line-height: 1.4; */
 	color: #fff;
 	overflow-x: hidden;
     /* background-color: #2350e2d8; */
-    background-image: url(../images/graf.png);
-    background-position: center;
+    background-image: url(../images/game-of-thrones-wallpaper.jpg);
+    /* background-position: center; */
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 100%;
     width: 100%;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -26,10 +26,10 @@ body{
     padding-bottom: 300px;
 }
 p{
-    color:#faf9f7 ;
+    color:black ;
 }
 h1{
-    color:#faf9f7 ;
+    color:black ;
 }
 .sec-center {
   position: relative;
