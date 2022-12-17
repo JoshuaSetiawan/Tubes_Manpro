@@ -2,7 +2,7 @@
 // import * as echarts from '../../node_modules/echarts';
 // import * as echarts from '../../node_modules/echarts/core.js';
 
-const searching = this.document.getElementById('body')
+// const searching = this.document.getElementById('body')
 
 
 // function myFunction() {
@@ -193,148 +193,16 @@ function onSubmitGrafBar(event){
 }
 
 //Erwin - Graf
-// const formGraf = document.getElementById("formGraf");
-// if(formGraf != null){
-//   formGraf.addEventListener("submit", onSubmitGraf);
-// }
-
-// function onSubmitGraf(event){
-//   event.preventDefault();
-//   let formElements = event.currentTarget.elements;
-//   // console.log(formElements[0].value);
-//   const obj = {book: formElements[0].value};
-//   let str = encodeURL(obj);
-
-//   const init = {
-//     method: 'post',
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded"
-//     },
-//     body: str
-//   };
-
-//   fetch('proses-graf',init)
-//   .then(res => {
-//     console.log(res.status);
-//     return res.text();
-//   })
-//   .then(result => {
-//     let resultJSON = JSON.parse(result);
-//     if(resultJSON.status == 'success'){
-//       console.log('sukses');
-//       console.log(resultJSON);
-//       const ctx = document.getElementById('myGraph');
-//       const myGraph = echarts.init(ctx,'dark');
-
-//       let option = {
-//         title: {
-//           text: 'Basic Graph'
-//         },
-//         tooltip: {},
-//         animationDurationUpdate: 1500,
-//         animationEasingUpdate: 'quinticInOut',
-//         series: [
-//           {
-//             type: 'graph',
-//             layout: 'none',
-//             symbolSize: 50,
-//             roam: true,
-//             label: {
-//               show: true
-//             },
-//             edgeSymbol: ['circle', 'arrow'],
-//             edgeSymbolSize: [4, 10],
-//             edgeLabel: {
-//               fontSize: 20
-//             },
-//             data: [
-//               {
-//                 name: 'Node 1',
-//                 x: 300,
-//                 y: 300
-//               },
-//               {
-//                 name: 'Node 2',
-//                 x: 800,
-//                 y: 300
-//               },
-//               {
-//                 name: 'Node 3',
-//                 x: 550,
-//                 y: 100
-//               },
-//               {
-//                 name: 'Node 4',
-//                 x: 550,
-//                 y: 500
-//               }
-//             ],
-//             // links: [],
-//             links: [
-//               {
-//                 source: 0,
-//                 target: 1,
-//                 symbolSize: [5, 20],
-//                 label: {
-//                   show: true
-//                 },
-//                 lineStyle: {
-//                   width: 5,
-//                   curveness: 0.2
-//                 }
-//               },
-//               {
-//                 source: 'Node 2',
-//                 target: 'Node 1',
-//                 label: {
-//                   show: true
-//                 },
-//                 lineStyle: {
-//                   curveness: 0.2
-//                 }
-//               },
-//               {
-//                 source: 'Node 1',
-//                 target: 'Node 3'
-//               },
-//               {
-//                 source: 'Node 2',
-//                 target: 'Node 3'
-//               },
-//               {
-//                 source: 'Node 2',
-//                 target: 'Node 4'
-//               },
-//               {
-//                 source: 'Node 1',
-//                 target: 'Node 4'
-//               }
-//             ],
-//             lineStyle: {
-//               opacity: 0.9,
-//               width: 2,
-//               curveness: 0
-//             }
-//           }
-//         ]
-//       }
-//       option && myGraph.setOption(option);
-//     }
-//   })
-// }
-
-//Pencarian
-const formNama = document.getElementById("search-nama");
-if(formNama != null){
-  formNama.addEventListener("submit", onSubmitCari);
+const formGraf = document.getElementById("formGraf");
+if(formGraf != null){
+  formGraf.addEventListener("submit", onSubmitGraf);
 }
 
-
-function onSubmitCari(event){
+function onSubmitGraf(event){
   event.preventDefault();
   let formElements = event.currentTarget.elements;
   // console.log(formElements[0].value);
-  const obj = {book: formElements[0].value, name: formElements[1].value};
+  const obj = {book: formElements[0].value};
   let str = encodeURL(obj);
 
   const init = {
@@ -345,7 +213,7 @@ function onSubmitCari(event){
     body: str
   };
 
-  fetch('proses-pencarian',init)
+  fetch('proses-graf',init)
   .then(res => {
     console.log(res.status);
     return res.text();
@@ -353,10 +221,178 @@ function onSubmitCari(event){
   .then(result => {
     let resultJSON = JSON.parse(result);
     if(resultJSON.status == 'success'){
-      let list = document.getElementById("myUL");
-      let dataCount = resultJSON.arrCount;
-      let dataTarget = resultJSON.arrTarget;
-      // window.location.replace(resultJSON.url);
+      console.log('sukses');
+      // console.log(resultJSON);
+
+      let arr1PreNodes = [];
+      let arr1Nodes = [];
+      let arrNodes = [];
+
+      for(let i = 0; i < 20; i++){
+        if(i < 10){
+          arr1PreNodes[i] = resultJSON.arrSource[i];
+        }
+        else if(i >= 10){
+          arr1PreNodes[i] = resultJSON.arrTarget[i-10];
+        }
+      }
+
+      for(let value of arr1PreNodes){
+        if(arr1Nodes.indexOf(value) === -1){
+          arr1Nodes.push(value);
+        }
+      }
+
+      for (let i = 0; i < arr1Nodes.length; i++) {
+        arrNodes[i] = {id:arr1Nodes[i], label: arr1Nodes[i]};
+      }
+
+      let arr1PreEdges = [];
+      let arr1Edges = [];
+      let arrEdges = [];
+
+      for (let i = 0; i < resultJSON.arrSource.length; i++) {
+        arrEdges[i] = {from:resultJSON.arrSource[i], to:resultJSON.arrTarget[i]};
+      }
+
+      console.log(arrNodes);
+      console.log(arrEdges);
+
+      let nodes = new vis.DataSet(arrNodes);
+
+      let edges = new vis.DataSet(arrEdges);
+
+      let container = document.getElementById('canvasGraph');
+
+      let data = {
+        nodes: nodes,
+        edges: edges
+      };
+
+      let options = {};
+
+      let network = new vis.Network(container,data,options);
     }
   })
 }
+
+//Pencarian
+// const formNama = document.getElementById("search-nama");
+// let table;
+// if(formNama != null){
+//   formNama.addEventListener("submit", onSubmitCari);
+// }
+
+// function onSubmitCari(event){
+//   event.preventDefault();
+//   let formElements = event.currentTarget.elements;
+//   // console.log(formElements[0].value);
+//   const obj = {book: formElements[0].value, name: formElements[1].value};
+//   let str = encodeURL(obj);
+
+//   const init = {
+//     method: 'post',
+//     headers: {
+//       "Content-Type": "application/x-www-form-urlencoded"
+//     },
+//     body: str
+//   };
+
+//   fetch('proses-pencarian',init)
+//   .then(res => {
+//     console.log(res.status);
+//     return res.text();
+//   })
+//   .then(result => {
+//     let resultJSON = JSON.parse(result);
+//     if(resultJSON.status == 'success'){
+//       let dataCount = resultJSON.arrCount;
+//       let dataTarget = resultJSON.arrTarget;
+//       console.log(dataCount);
+//       console.log(dataTarget);
+//       addRow(dataCount, dataTarget);
+//     }
+//   })
+// }
+
+// function addRow(dataCount, dataTarget){
+//   let tableParent = document.getElementById("divTable");
+//   if(table != null){
+//     table.remove();
+
+//     table = document.createElement("table");
+    
+//     let row1 = document.createElement("tr");
+
+//     let cTarget = document.createElement("td");
+//     let cCount = document.createElement("td");
+
+//     cTarget.innerText = "Target";
+//     cCount.innerText = "Count";
+
+//     row1.appendChild(cTarget);
+//     row1.appendChild(cCount);
+
+//     table.appendChild(row1);
+
+
+//     for (let i = 0; i < dataCount.length; i++) {
+//       //create row
+//       let row = document.createElement("tr");
+
+//       //create cells
+//       let c1 = document.createElement("td");
+//       let c2 = document.createElement("td");
+
+//       //insert data to cells
+//       c1.innerText = dataTarget[i];
+//       c2.innerText = dataCount[i];
+
+//       //append cells to row
+//       row.appendChild(c1);
+//       row.appendChild(c2);
+
+//       //append row to table
+//       table.appendChild(row);
+//     }
+//     tableParent.appendChild(table);
+//   }
+//   else{
+//     table = document.createElement("table");
+    
+//     let row1 = document.createElement("tr");
+
+//     let cTarget = document.createElement("td");
+//     let cCount = document.createElement("td");
+
+//     cTarget.innerText = "Target";
+//     cCount.innerText = "Count";
+
+//     row1.appendChild(cTarget);
+//     row1.appendChild(cCount);
+
+//     table.appendChild(row1);
+
+
+//     for (let i = 0; i < dataCount.length; i++) {
+//       //create row
+//       let row = document.createElement("tr");
+
+//       //create cells
+//       let c1 = document.createElement("td");
+//       let c2 = document.createElement("td");
+
+//       //insert data to cells
+//       c1.innerText = dataTarget[i];
+//       c2.innerText = dataCount[i];
+
+//       //append cells to row
+//       row.appendChild(c1);
+//       row.appendChild(c2);
+
+//       //append row to table
+//       table.appendChild(row);
+//     }
+//     tableParent.appendChild(table);
+//   }
+// }
