@@ -62,8 +62,8 @@ h1,h3{
 }
 
 body{    
-    background-image: url('../images/wallpaperGOT3.jpg');
-    background-size: 120%;
+    background-image: url('../images/GOT.jpg');
+    background-size: 100%;
 }
 
 #myInput {
@@ -96,7 +96,7 @@ body{
     font-size: 18px;
     color: black;
     display: block;
-    
+
 }
   
 #myUL li a:hover:not(.header) {
