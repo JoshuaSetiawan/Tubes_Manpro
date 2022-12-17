@@ -48,8 +48,13 @@
     font-family: 'barkentina';
     src: url('../fonts/Barkentina1/Barkentina 1.otf');
 }
-.content_grid{
-    width: 90%;
-    height: 25vw;
-    border: 1px solid black;
+
+#flex-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#canvas{
+    width:60%;
+    height:60%;
 }
