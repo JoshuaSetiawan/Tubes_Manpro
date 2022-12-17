@@ -49,11 +49,17 @@
     src: url('../fonts/Barkentina1/Barkentina 1.otf');
 }
 
+body{
+    background-image: url(../images/game-of-thrones-a-telltale-games-series-hd-wallpapers-33155-7193722.jpg);
+    background-repeat: no-repeat;
+}
 #content-wrapper{
     margin-top: 1%;
-    display: grid;
-    grid-template-columns: auto auto;
+    /* display: grid; */
+    grid-template-columns: auto 0px;
     column-gap: 5%;
+    justify-content: center;
+    align-items: center;
 }
 
 #title{
@@ -61,7 +67,10 @@
 }
 
 #desc-website{
-    margin-left: 4%;
+    margin-left: 32%;
+    margin-top: 15%;
+    width: 700px;
+    text-align: center;
 }
 
 #desc{
@@ -75,6 +84,9 @@
 }
 
 #desc-fitur{
+    margin-top: 30%;
+    margin-bottom: 50px;
+
     display: grid;
     grid-template-rows: auto auto auto;
     row-gap: 2%;
@@ -84,7 +96,7 @@
 
 #fitur-grafikbar{
     justify-self: center;
-    width: 50%;
+    width: 20%;
     display: inline-flex;
     flex-direction: column;
     border-style: solid;
@@ -101,7 +113,7 @@
 
 #fitur-cari{
     justify-self: center;
-    width: 50%;
+    width: 20%;
     display: inline-flex;
     flex-direction: column;
     border-style: solid;
@@ -123,7 +135,7 @@
 
 #fitur-graf{
     justify-self: center;
-    width: 50%;
+    width: 20%;
     display: inline-flex;
     flex-direction: column;
     border-style: solid;
@@ -153,4 +165,18 @@
     background-color: black;
     color: white;
     border-radius: 7px;
+}
+p{
+    color: black;
+}
+h1{
+    color: white;
+    font-size: 80px;
+}
+.desc{
+    width: 200px;
+    font-size: 40px;
+}
+.desc-desc{
+    color: white;
 }
