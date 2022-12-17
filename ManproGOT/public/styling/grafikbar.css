@@ -49,12 +49,29 @@
     src: url('../fonts/Barkentina1/Barkentina 1.otf');
 }
 
+p{
+    color:#dadada;
+}
+h1,h3{
+    color:#dadada;
+}
+
+#textInput{
+    color:#dadada;
+}
+body{    
+    background-image: url('../images/GOT-image1.jpg');
+    background-size: 100%;
+}
+
 #flex-wrapper{
+    margin: 1%;
     display: flex;
-    justify-content: center;
 }
 
 #canvas{
-    width:60%;
-    height:60%;
+    width:55%;
+    height:55%;
+    background-color: rgb(0, 0, 0);
+    opacity: 85%;
 }

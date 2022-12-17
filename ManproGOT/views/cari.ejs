@@ -18,7 +18,7 @@
                     <h1>CARI</h1>
                     
                     <form action="/filterBukuCari" method="post" enctype="multipart/form-data">
-                        <label for="input_buku">Input Buku:</label>
+                        <label for="input_buku" id="textInput">Input Buku:</label>
                         <select name="dropdown_buku" id="dropdown_buku">
                           <option value="buku1">Buku 1</option>
                           <option value="buku2">Buku 2</option>
@@ -29,7 +29,7 @@
                         <br><br>
                         <!-- <input type="submit" value="Submit"> -->
                     </form>
-                    <form action="/filterNama" method="post" enctype="multipart/form-data">
+                    <form action="/filterNama" method="post" id="filterNama" enctype="multipart/form-data">
                         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
                     </form>
                     

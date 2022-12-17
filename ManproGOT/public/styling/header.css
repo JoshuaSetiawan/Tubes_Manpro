@@ -54,6 +54,11 @@ header{
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
+    margin: -8px;
+    padding: 10px;
+    opacity: 80%;
+    width: 100%;
 }
 
 #logo-got{
@@ -68,6 +73,7 @@ header{
     justify-content: space-evenly;
     list-style-type: none;
     flex-grow: 1;
+    
 }
 
 .button{
@@ -76,7 +82,7 @@ header{
     border: none;
     font-family: 'avenue';
     /* background color harus pasang value inherit, sesuai warna backgroundnya */
-    background-color: white;
+    background-color: #dadada;
     transition-duration: 0.4s;
     cursor: pointer;
 }

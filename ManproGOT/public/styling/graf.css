@@ -16,7 +16,7 @@ body{
     background-image: url(../images/graf.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 100%;
     width: 100%;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -26,10 +26,10 @@ body{
     padding-bottom: 300px;
 }
 p{
-    color:#faf9f7 ;
+    color:#dadada ;
 }
 h1{
-    color:#faf9f7 ;
+    color:#dadada ;
 }
 .sec-center {
   position: relative;
