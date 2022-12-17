@@ -79,48 +79,68 @@ app.post('/proses-grafik-bar', (req,res) => {
 });
 
 app.post('/proses-graf', (req,res) => {
-    const nomor = req.body.book;
-    console.log(nomor+" proses graf");
-    switch(nomor){
-        case 'book1':
-            pool.query(`SELECT source, weight, target FROM book1 ORDER BY weight DESC LIMIT 10`, (err, result,fields) => {
-                if(err){
-                    return console.log(err);
-                }
-                let arrSumber = [];
-                let arrTujuan = [];
-                let arrBerat = [];
-                for (let i = 0; i < result.length; i++) {
-                    arrSumber[i] = result[i].source;
-                    arrTujuan[i] = result[i].target;
-                    arrBerat[i] = result[i].weight;
-                }
-                res.send({status: 'success', url:'/dsa', arrSource: arrSumber, arrTarget: arrTujuan, arrWeight: arrBerat});
-                // return console.log(result);
-            });
-            break;
-    }
+    const buku = req.body.book;
+    // console.log(nomor+" proses graf");
+    pool.query(`SELECT source, weight, target FROM ${buku} ORDER BY weight DESC LIMIT 10`, (err, result,fields) => {
+        if(err){
+            return console.log(err);
+        }
+        let arrSumber = [];
+        let arrBerat = [];
+        let arrTujuan = [];
+        for (let i = 0; i < result.length; i++) {
+            arrSumber[i] = result[i].source;
+            arrBerat[i] = result[i].weight;
+            arrTujuan[i] = result[i].target;
+        }
+        console.log(result);
+        res.send({status: 'success', url:'/grafikbar', arrSource: arrSumber, arrWeight: arrBerat, arrTarget: arrTujuan});
+    });
 });
 
 app.post('/proses-pencarian', (req,res) => {
-    // const nomor = req.body.book;
-    // const nama = req.body.name;
-    const buku = 'book5';
-    const nama = 'Arron';
-    // console.log(nomor+" prroses pencarian");
+    // const buku = req.query.book;
+    // const nama = req.query.name;
+    const buku = req.body.book;
+    const nama = req.body.name;
+    console.log(buku+" proses pencarian " + nama);
     pool.query(`SELECT target as 'target1', (SELECT COUNT(target) FROM ${buku} WHERE target = target1) as count FROM ${buku} WHERE source LIKE '%${nama}%' GROUP BY target`, (err,result,fields) => {
         if(err){
             return console.log(err);
         }
-        // return console.log(result);
-        let arrTujuan = [];
-        let arrHitung = [];
-        for (let i = 0; i < result.length; i++) {
-            arrTujuan[i] = result[i].target1;
-            arrHitung[i] = result[i].count;
+        const resultPerPage = 10;
+        const numOfResults = result.length;
+        const numberOfPages = Math.ceil(numOfResults/resultPerPage);
+        let page = req.query.page ? Number(req.query.page) : 1;
+        console.log(page);
+        if(page > numberOfPages){
+            //res.redirect('/?book=' + book + '&name='+ nama +'&page='+encodeURIComponent(numberOfPages));
+            console.log("gw ada");
+            res.redirect('/?page='+encodeURIComponent(numberOfPages));
         }
-        // res.send({status: 'success', url:'/cari', arrTarget: arrTujuan, arrCount: arrHitung});
-        res.render('cari.ejs', {arrTarget: arrTujuan, arrCount: arrHitung});
+        else if(page < 1){
+            res.redirect('/?page='+encodeURIComponent('1'));
+        }
+        //Determine the SQL limit starting number
+        const startingLimit = (page-1) * resultPerPage;
+        //get the relevant number of POSTS for this starting page
+        pool.query(`SELECT target as 'target1', (SELECT COUNT(target) FROM ${buku} WHERE target = target1) as count FROM ${buku} WHERE source LIKE '%${nama}%' GROUP BY target LIMIT ${startingLimit},${resultPerPage}`, (err, result,fields) => {
+            if(err){
+                return console.log(err);
+            }
+            let arrTujuan = [];
+            let arrHitung = [];
+            for (let i = 0; i < result.length; i++) {
+                arrTujuan[i] = result[i].target1;
+                arrHitung[i] = result[i].count;
+            }
+            let iterator = (page - 5) < 1 ? 1 : page - 5;
+            let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) : page + (numberOfPages - page);
+            if(endingLink < (page + 4)){
+                iterator -= (page + 4) - numberOfPages;
+            }
+            res.render('cari.ejs',{arrTarget: arrTujuan, arrCount: arrHitung, page, iterator, endingLink, numberOfPages});
+        });
     });
 });
 
