@@ -83,6 +83,7 @@ header{
     font-family: 'avenue';
     /* background color harus pasang value inherit, sesuai warna backgroundnya */
     background-color: #dadada;
+    background-color: inherit;
     transition-duration: 0.4s;
     cursor: pointer;
 }
