@@ -18,12 +18,12 @@ body{
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100%;
-    display: flex;
+    /* display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -ms-flex-pack: center;
     justify-content: center;
-    padding-bottom: 300px;
+    padding-bottom: 300px; */
 }
 p{
     color:black ;
@@ -169,14 +169,14 @@ a {
   justify-content: space-between;
     -ms-flex-pack: distribute;
 }
-a:hover {
+.buku1:hover {
   color: #102770;
   background-color: #ffeba7;
 }
-a .uil {
+/* a .uil {
   font-size: 22px;
-}
-.dropdown-sub:checked + label,
+} */
+/* .dropdown-sub:checked + label,
 .dropdown-sub:not(:checked) + label{
   position: relative;
   color: #fff;
@@ -199,8 +199,8 @@ a .uil {
   justify-content: space-between;
     -ms-flex-pack: distribute;
     cursor: pointer;
-}
-.dropdown-sub:checked + label .uil,
+} */
+/* .dropdown-sub:checked + label .uil,
 .dropdown-sub:not(:checked) + label .uil{
   font-size: 22px;
 }
@@ -215,8 +215,8 @@ a .uil {
 .dropdown-sub:not(:checked) + label:hover{
   color: #102770;
   background-color: #ffeba7;
-}
-.section-dropdown-sub {
+} */
+/* .section-dropdown-sub {
   position: relative;
   display: block;
   width: 100%;
@@ -238,4 +238,4 @@ a .uil {
 }
 .section-dropdown-sub a .uil {
   font-size: 20px;
-}
+} */
