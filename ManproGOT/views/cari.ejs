@@ -16,27 +16,13 @@
                 <div>
                     
                     <h1>CARI</h1>
-
-                    <form action="/filterBukuCari" method="post" enctype="multipart/form-data">
+                    <!-- <form action="/filterNama" method="post" id="filterNama" enctype="multipart/form-data">
                         <label for="input_buku" id="textInput">Input Buku:</label>
-                    <!-- <form action="/filterBukuCari" method="post" enctype="multipart/form-data">
-                        <label for="input_buku">Input Buku:</label>
-                        <select name="dropdown_buku" id="dropdown_buku">
-                            <option value="buku1">Buku 1</option>
-                            <option value="buku2">Buku 2</option>
-                            <option value="buku3">Buku 3</option>
-                            <option value="buku4">Buku 4</option>
-                            <option value="buku5">Buku 5</option>
-                        </select>
-                        <br><br>
-                        <!-- <input type="submit" value="Submit"> -->
-                    </form>
-                    <form action="/filterNama" method="post" id="filterNama" enctype="multipart/form-data">
                         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
                     </form> -->
                     <form action="/proses-pencarian" method="post" id="search-nama">
                         <div id="container_buku">
-                            <label for="input_buku">Input Buku:</label>
+                            <label for="input_buku" id="label_buku">Input Buku:</label>
                             <select name="book" id="dropdown_buku">
                                 <option value="book1">Buku 1</option>
                                 <option value="book2">Buku 2</option>
@@ -46,7 +32,7 @@
                             </select>
                         </div>
                         <div id="container_nama">
-                            <img src="images/searchIcon.png" id="search-image">
+                            <!-- <img src="images/searchIcon.png" id="search-image"> -->
                             <input type="text" id="inputNama" placeholder="Search for names..." title="Type in a name" name="name">
                             <input type="submit" id="submitCari" value="Search">
                         </div>
@@ -54,8 +40,6 @@
                     
                 </div>
                 <div>
-                    <h3>DESC</h3>
-
                     <div id="divTable">
                         <table id="myTable">
                             <tr>
