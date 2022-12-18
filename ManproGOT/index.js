@@ -80,7 +80,7 @@ app.post('/proses-grafik-bar', (req,res) => {
 
 app.post('/proses-graf', (req,res) => {
     const buku = req.body.book;
-    // console.log(nomor+" proses graf");
+    console.log(buku+" proses graf");
     pool.query(`SELECT source, weight, target FROM ${buku} ORDER BY weight DESC LIMIT 10`, (err, result,fields) => {
         if(err){
             return console.log(err);
@@ -116,10 +116,54 @@ app.post('/proses-pencarian', (req,res) => {
         if(page > numberOfPages){
             //res.redirect('/?book=' + book + '&name='+ nama +'&page='+encodeURIComponent(numberOfPages));
             console.log("gw ada");
-            res.redirect('/?page='+encodeURIComponent(numberOfPages));
+            res.redirect('cari/?page='+encodeURIComponent(numberOfPages));
         }
         else if(page < 1){
-            res.redirect('/?page='+encodeURIComponent('1'));
+            res.redirect('cari/?page='+encodeURIComponent('1'));
+        }
+        //Determine the SQL limit starting number
+        const startingLimit = (page-1) * resultPerPage;
+        //get the relevant number of POSTS for this starting page
+        pool.query(`SELECT target as 'target1', (SELECT COUNT(target) FROM ${buku} WHERE target = target1) as count FROM ${buku} WHERE source LIKE '%${nama}%' GROUP BY target LIMIT ${startingLimit},${resultPerPage}`, (err, result,fields) => {
+            if(err){
+                return console.log(err);
+            }
+            let arrTujuan = [];
+            let arrHitung = [];
+            for (let i = 0; i < result.length; i++) {
+                arrTujuan[i] = result[i].target1;
+                arrHitung[i] = result[i].count;
+            }
+            let iterator = (page - 5) < 1 ? 1 : page - 5;
+            let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) : page + (numberOfPages - page);
+            if(endingLink < (page + 4)){
+                iterator -= (page + 4) - numberOfPages;
+            }
+            res.render('cari.ejs',{arrTarget: arrTujuan, arrCount: arrHitung, page, iterator, endingLink, numberOfPages});
+        });
+    });
+});
+
+app.get('cari/?page=', (req,res) => {
+    const buku = req.body.book;
+    const nama = req.body.name;
+    console.log("masukkkk");
+    pool.query(`SELECT target as 'target1', (SELECT COUNT(target) FROM ${buku} WHERE target = target1) as count FROM ${buku} WHERE source LIKE '%${nama}%' GROUP BY target`, (err,result,fields) => {
+        if(err){
+            return console.log(err);
+        }
+        const resultPerPage = 10;
+        const numOfResults = result.length;
+        const numberOfPages = Math.ceil(numOfResults/resultPerPage);
+        let page = req.query.page ? Number(req.query.page) : 1;
+        console.log(page);
+        if(page > numberOfPages){
+            //res.redirect('/?book=' + book + '&name='+ nama +'&page='+encodeURIComponent(numberOfPages));
+            console.log("gw ada");
+            res.redirect('cari/?page='+encodeURIComponent(numberOfPages));
+        }
+        else if(page < 1){
+            res.redirect('cari/?page='+encodeURIComponent('1'));
         }
         //Determine the SQL limit starting number
         const startingLimit = (page-1) * resultPerPage;
@@ -145,8 +189,5 @@ app.post('/proses-pencarian', (req,res) => {
 });
 
 app.use('/', (req,res) => {
-    res.render('test.ejs');
+    res.send('Halaman tidak ditemukan');
 });
-// app.use('/', (req,res) => {
-//     res.send('Halaman tidak ditemukan');
-// });
