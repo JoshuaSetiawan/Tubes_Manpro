@@ -3,6 +3,8 @@
         <head>
             <title>Title of the document</title>
             <link rel="stylesheet" href="styling/graf.css">
+            <script type="module" src = 'script/script.js' defer></script>
+            <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
         </head>
 
         <body>
@@ -19,24 +21,107 @@
                         Fitur untuk menampilkan graf tidak berarah, graf yang ditampilkan harus tidak mengandung node yang diulang
                     </p>
                 </div>
-                <form action="/proses-pencarian" method="post" id="search-nama">
                     <div class="sec-center"> 	
                         <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
                         <label class="for-dropdown" for="dropdown">Dropdown Menu <i class="uil uil-arrow-down"></i></label>
-                        <div class="section-dropdown"> 
-                            <a class = "buku1" href="#">Buku 1 <i class="uil uil-arrow-right"></i></a>
-                            <a class = "buku1" href="#">Buku 2 <i class="uil uil-arrow-right"></i></a>
-                            <a class = "buku1" href="#">Buku 3 <i class="uil uil-arrow-right"></i></a>
-                            <a class = "buku1" href="#">Buku 4 <i class="uil uil-arrow-right"></i></a>
-                            <a class = "buku1" href="#">Buku 5 <i class="uil uil-arrow-right"></i></a>
-                        </div>
+                        <select class="section-dropdown" onchange="sendBook(this.value)" name="dropdown_buku"> 
+                            <option class = "buku1" href="#" value="book1">Buku 1 <i class="uil uil-arrow-right"></i></option>
+                            <option class = "buku1" href="#" value="book2">Buku 2 <i class="uil uil-arrow-right"></i></option>
+                            <option class = "buku1" href="#" value="book3">Buku 3 <i class="uil uil-arrow-right"></i></option>
+                            <option class = "buku1" href="#" value="book4">Buku 4 <i class="uil uil-arrow-right"></i></option>
+                            <option class = "buku1" href="#" value="book5">Buku 5 <i class="uil uil-arrow-right"></i></option>
+                        </select>
                     </div>
-                </form> 
-
-                <p>
-                Grafik
-                </p>
+                <div id="flex-wrapper">
+                    <div id="canvasGraph">
+                        
+                    </div>
+                </div>
             </div>
 
         </body>
+
+        <script>
+            function sendBook(buku){
+                const obj = {book: buku};
+                let str = encodeURL(obj);
+                const init = {
+                    method: 'post',
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                        body: str
+                };
+
+                fetch('proses-graf',init)
+                .then(res => {
+                    console.log(res.status);
+                    return res.text();
+                })
+                .then(result => {
+                    let resultJSON = JSON.parse(result);
+                    if(resultJSON.status == 'success'){
+                        console.log('sukses');
+                        console.log(resultJSON);
+
+                        let arr1PreNodes = [];
+                        let arr1Nodes = [];
+                        let arrNodes = [];
+
+                        for(let i = 0; i < 20; i++){
+                            if(i < 10){
+                            arr1PreNodes[i] = resultJSON.arrSource[i];
+                            }
+                            else if(i >= 10){
+                            arr1PreNodes[i] = resultJSON.arrTarget[i-10];
+                            }
+                        }
+
+                        for(let value of arr1PreNodes){
+                            if(arr1Nodes.indexOf(value) === -1){
+                            arr1Nodes.push(value);
+                            }
+                        }
+
+                        for (let i = 0; i < arr1Nodes.length; i++) {
+                            arrNodes[i] = {id:arr1Nodes[i], label: arr1Nodes[i]};
+                        }
+
+                        let arr1PreEdges = [];
+                        let arr1Edges = [];
+                        let arrEdges = [];
+
+                        for (let i = 0; i < resultJSON.arrSource.length; i++) {
+                            arrEdges[i] = {from:resultJSON.arrSource[i], to:resultJSON.arrTarget[i]};
+                        }
+
+                        console.log(arrNodes);
+                        console.log(arrEdges);
+
+                        let nodes = new vis.DataSet(arrNodes);
+
+                        let edges = new vis.DataSet(arrEdges);
+
+                        let container = document.getElementById('canvasGraph');
+
+                        let data = {
+                            nodes: nodes,
+                            edges: edges
+                        };
+
+                        let options = {};
+
+                        let network = new vis.Network(container,data,options);
+                        }
+                    })
+                }
+
+                function encodeURL(data){
+                const ret = [];
+                for (let d in data){
+                    ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+                }
+                    return ret.join('&');
+                }
+        </script>
 </html>

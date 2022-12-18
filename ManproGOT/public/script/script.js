@@ -192,18 +192,11 @@ function onSubmitGrafBar(event){
   })
 }
 
-//Erwin - Graf
-const formGraf = document.getElementById("formGraf");
-if(formGraf != null){
-  formGraf.addEventListener("submit", onSubmitGraf);
-}
-
-function onSubmitGraf(event){
-  event.preventDefault();
-  let formElements = event.currentTarget.elements;
-  // console.log(formElements[0].value);
-  const obj = {book: formElements[0].value};
+//Erwin - Graf - gak kepake, scriptnya udah ada di ejs
+function onSubmitGraf(buku){
+  const obj = {book: buku};
   let str = encodeURL(obj);
+  console.log(str);
 
   const init = {
     method: 'post',
@@ -222,7 +215,7 @@ function onSubmitGraf(event){
     let resultJSON = JSON.parse(result);
     if(resultJSON.status == 'success'){
       console.log('sukses');
-      // console.log(resultJSON);
+      console.log(resultJSON);
 
       let arr1PreNodes = [];
       let arr1Nodes = [];
